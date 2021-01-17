@@ -5,6 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 import javax.annotation.Nullable;
+
+import com.modernutility.ModernUtility;
+import com.modernutility.events.EventType;
+import com.modernutility.listeners.EventUpdate;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.BiomeSoundHandler;
@@ -275,6 +279,11 @@ public class ClientPlayerEntity extends AbstractClientPlayerEntity
      */
     private void onUpdateWalkingPlayer()
     {
+        // so this code will run when the player walks
+        EventUpdate e = new EventUpdate();
+        e.setType(EventType.PRE);
+        ModernUtility.onEvent(e);
+
         boolean flag = this.isSprinting();
 
         if (flag != this.serverSprintState)

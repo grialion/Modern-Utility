@@ -1,6 +1,8 @@
 package com.modernutility;
 
 
+import com.modernutility.listeners.EventUpdate;
+import com.modernutility.module.Module;
 import com.modernutility.module.ModuleManager;
 import com.modernutility.ui.Hud;
 
@@ -38,4 +40,14 @@ public class ModernUtility {
     }
 
 
+    public static void onEvent(EventUpdate e) {
+        // so this will be called with an event
+        for (Module module : ModuleManager.activeModules) {
+            if(!module.getState())
+            {
+                continue; // continue the loop if not enabled
+            }
+            module.onEvent(e);
+        }
+    }
 }

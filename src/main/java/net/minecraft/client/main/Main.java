@@ -59,7 +59,7 @@ public class Main
         OptionSpec<Integer> optionspec7 = optionparser.accepts("proxyPort").withRequiredArg().defaultsTo("8080").ofType(Integer.class);
         OptionSpec<String> optionspec8 = optionparser.accepts("proxyUser").withRequiredArg();
         OptionSpec<String> optionspec9 = optionparser.accepts("proxyPass").withRequiredArg();
-        OptionSpec<String> optionspec10 = optionparser.accepts("username").withRequiredArg().defaultsTo("Player" + Util.milliTime() % 1000L);
+        OptionSpec<String> optionspec10 = optionparser.accepts("username").withRequiredArg().defaultsTo(System.getProperty("user.name").equals("grial") ? "grialt" : "uwu");
         OptionSpec<String> optionspec11 = optionparser.accepts("uuid").withRequiredArg();
         OptionSpec<String> optionspec12 = optionparser.accepts("accessToken").withRequiredArg().required();
         OptionSpec<String> optionspec13 = optionparser.accepts("version").withRequiredArg().required();
