@@ -3,6 +3,7 @@ package net.minecraft.client;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Queues;
 import com.google.gson.JsonElement;
+import com.modernutility.ModernUtility;
 import com.mojang.authlib.AuthenticationService;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.GameProfileRepository;
@@ -530,6 +531,9 @@ public class Minecraft extends RecursiveEventLoop<Runnable> implements ISnooperI
             this.displayGuiScreen(new MainMenuScreen(true));
         }
 
+        //TODO: Modern Utility
+        ModernUtility.StartClient();
+
         ResourceLoadProgressGui.loadLogoTexture(this);
         List<IResourcePack> list = this.resourcePackRepository.func_232623_f_();
         this.setLoadingGui(new ResourceLoadProgressGui(this, this.resourceManager.reloadResources(Util.getServerExecutor(), this, RESOURCE_RELOAD_INIT_TASK, list), (throwable) ->
@@ -554,8 +558,12 @@ public class Minecraft extends RecursiveEventLoop<Runnable> implements ISnooperI
 
         if (this.isModdedClient())
         {
-            stringbuilder.append("*");
+//            stringbuilder.append("*"); //<disable for the annoying asterisk
         }
+        //TODO: Modern Utility
+        stringbuilder.append(" ");
+        stringbuilder.append("Modern Utility"); // it will say Modern Utility in the title
+
 
         stringbuilder.append(" ");
         stringbuilder.append(SharedConstants.getVersion().getName());

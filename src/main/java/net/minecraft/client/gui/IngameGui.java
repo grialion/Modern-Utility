@@ -4,6 +4,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
+import com.modernutility.ModernUtility;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -186,6 +187,9 @@ public class IngameGui extends AbstractGui
             RenderSystem.enableDepthTest();
             RenderSystem.defaultBlendFunc();
         }
+
+        ModernUtility.hud.draw(matrixStack); // draw our hud there, in the minecraft event
+        // so here the minecraft event runs, it draws our inventory, items etc. and we will draw our texts
 
         ItemStack itemstack = this.mc.player.inventory.armorItemInSlot(3);
 

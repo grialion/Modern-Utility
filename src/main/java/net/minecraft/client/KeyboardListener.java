@@ -2,6 +2,9 @@ package net.minecraft.client;
 
 import java.util.Locale;
 import javax.annotation.Nullable;
+
+import com.modernutility.module.Module;
+import com.modernutility.module.ModuleManager;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.gui.IGuiEventListener;
 import net.minecraft.client.gui.INestedGuiEventHandler;
@@ -458,9 +461,20 @@ public class KeyboardListener
             {
                 InputMappings.Input inputmappings$input = InputMappings.getInputByCode(key, scanCode);
 
+
                 if (action == 0)
                 {
                     KeyBinding.setKeyBindState(inputmappings$input, false);
+
+
+                    // ok actually we need to listen there lol
+                    //TODO: Modern Utility
+                    // i added that, so we can find it quicker, what we modified in the minecraft's original code
+                    for (Module activeModule : ModuleManager.activeModules) {
+                        if(key == activeModule.getBind()){
+                            activeModule.toggleModule();
+                        }
+                    }
 
                     if (key == 292)
                     {
